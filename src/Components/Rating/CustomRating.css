@@ -1,0 +1,29 @@
+.custom-rating {
+    display: inline-flex;
+  }
+  
+  .custom-rating .star {
+    cursor: pointer;
+    padding: 0 2px;
+  }
+  
+  .custom-rating .star.empty {
+    color: #ccc;
+  }
+  
+  .custom-rating .star.filled {
+    color: #ffc107;
+  }
+  
+  .custom-rating.large .star {
+    font-size: 2rem;
+  }
+  
+  .custom-rating.medium .star {
+    font-size: 1.5rem;
+  }
+  
+  .custom-rating.small .star {
+    font-size: 1rem;
+  }
+  
