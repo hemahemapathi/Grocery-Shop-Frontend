@@ -15,7 +15,7 @@ import {
 export const getAllReviewsAction = () => async (dispatch) => {
   try {
     dispatch({ type: GET_ALL_REVIEWS_REQUEST });
-    const { data } = await axios.get("/api/user/get/reviews");
+    const { data } = await axios.get("https://grocery-shop-backend-ihni.onrender.com/api/user/get/reviews");
     dispatch({ type: GET_ALL_REVIEWS_SUCCESS, payload: data });
   } catch (error) {
     console.error("Review fetch error:", error);
@@ -30,7 +30,7 @@ export const getAllReviewsAction = () => async (dispatch) => {
 export const getAllAdminReviewsAction = () => async (dispatch) => {
   try {
     dispatch({ type: GET_ALL_ADMIN_REVIEWS_REQUEST });
-    const { data } = await axios.get("/api/user/get/reviews");
+    const { data } = await axios.get("https://grocery-shop-backend-ihni.onrender.com/api/user/get/reviews");
     dispatch({ type: GET_ALL_ADMIN_REVIEWS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -43,7 +43,7 @@ export const getAllAdminReviewsAction = () => async (dispatch) => {
 export const deleteReviewsAction = (reviewId) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_REVIEWS_REQUEST });
-    const { data } = await axios.delete(`/api/user/admin/review/${reviewId}`);
+    const { data } = await axios.delete(`https://grocery-shop-backend-ihni.onrender.com/api/user/admin/review/${reviewId}`);
     dispatch({ type: DELETE_REVIEWS_REVIEWS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
