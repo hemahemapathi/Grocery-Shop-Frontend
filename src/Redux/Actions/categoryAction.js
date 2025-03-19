@@ -18,7 +18,7 @@ import axios from "axios";
 export const addCategoryAction = (categoryData) => async (dispatch) => {
   try {
     dispatch({ type: ADD_CATEGORY_REQUEST });
-    const { data } = await axios.post("/api/category/add", categoryData);
+    const { data } = await axios.post("https://grocery-shop-backend-ihni.onrender.com/api/category/add", categoryData);
     dispatch({ type: ADD_CATEGORY_SUCCESS, payload: data });
   } catch (error) {
     // console.log(error);
@@ -29,7 +29,7 @@ export const addCategoryAction = (categoryData) => async (dispatch) => {
 export const getAllCategoryAction = () => async (dispatch) => {
   try {
     dispatch({ type: GET_CATEGORY_REQUEST });
-    const { data } = await axios.get("/api/category/get");
+    const { data } = await axios.get("https://grocery-shop-backend-ihni.onrender.com/api/category/get");
     dispatch({ type: GET_CATEGORY_SUCCESS, payload: data });
   } catch (error) {
     // console.log(error);
@@ -41,7 +41,7 @@ export const getAllCategoryAction = () => async (dispatch) => {
 export const deleteCategoryAction = (categoryId) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_CATEGORY_REQUEST });
-    const { data } = await axios.delete(`/api/category/delete/${categoryId}`);
+    const { data } = await axios.delete(`https://grocery-shop-backend-ihni.onrender.com/api/category/delete/${categoryId}`);
     dispatch({ type: DELETE_CATEGORY_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -57,7 +57,7 @@ export const updateCategoryAction =
     try {
       dispatch({ type: UPDATE_CATEGORY_REQUEST });
       const { data } = await axios.put(
-        `/api/category/update/${categoryId}`,
+        `https://grocery-shop-backend-ihni.onrender.com/api/category/update/${categoryId}`,
         updateFormData
       );
       dispatch({ type: UPDATE_CATEGORY_SUCCESS, payload: data });
