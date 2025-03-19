@@ -2,7 +2,7 @@ import axios from "axios";
 import { ADD_TO_CART, REMOVE_CART_ITEM } from "../Constants/cartConstants";
 
 export const addToCartAction = (id, quantity) => async (dispatch, getState) => {
-  const { data } = await axios.get(`/api/product/getSingleProduct/${id}`);
+  const { data } = await axios.get(`https://grocery-shop-backend-ihni.onrender.com/api/product/getSingleProduct/${id}`);
   //console.log("CART ACTION CALL");
   dispatch({
     type: ADD_TO_CART,
