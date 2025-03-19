@@ -37,7 +37,7 @@ import axios from "axios";
 export const userRegisterAction = (userData) => async (dispatch) => {
   try {
     dispatch({ type: USER_REGISTER_REQUEST });
-    const { data } = await axios.post("/api/user/register", userData);
+    const { data } = await axios.post("https://grocery-shop-backend-ihni.onrender.com/api/user/register", userData);
     dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: USER_REGISTER_FAIL, error: error.response.data.message });
@@ -48,7 +48,7 @@ export const userLoginAction = (userData) => async (dispatch) => {
   try {
     dispatch({ type: USER_LOGIN_REQUEST });
     const config = { headers: { "Content-Type": "application/json" } };
-    const { data } = await axios.post("/api/user/login", userData);
+    const { data } = await axios.post("https://grocery-shop-backend-ihni.onrender.com/api/user/login", userData);
     localStorage.setItem('token', data.token);
     axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
     dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
@@ -61,7 +61,7 @@ export const loadUserAction = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_LOGIN_USER_REQUEST });
     const token = localStorage.getItem('token');
-    const { data } = await axios.get("/api/user/getloggeduser", {
+    const { data } = await axios.get("https://grocery-shop-backend-ihni.onrender.com/api/user/getloggeduser", {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -82,7 +82,7 @@ export const logOutUserAction = () => async (dispatch) => {
   try {
     dispatch({ type: LOGOUT_USER_REQUEST });
     const token = localStorage.getItem('token');
-    const { data } = await axios.get("/api/user/logOut", {
+    const { data } = await axios.get("https://grocery-shop-backend-ihni.onrender.com/api/user/logOut", {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -103,7 +103,7 @@ export const userPasswordUpdateAction = (userData) => async (dispatch) => {
     console.log("Password update data being sent:", userData);
     
     const token = localStorage.getItem('token');
-    const { data } = await axios.put("/api/user/changePassword", userData, {
+    const { data } = await axios.put("https://grocery-shop-backend-ihni.onrender.com/api/user/changePassword", userData, {
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
@@ -131,7 +131,7 @@ export const userPasswordUpdateAction = (userData) => async (dispatch) => {
 export const restPasswordSendEmailAction = (email) => async (dispatch) => {
   try {
     dispatch({ type: SEND_PASSWORD_REST_EMAIL_REQUEST });
-    const { data } = await axios.post("/api/user/send-reset-password-email", {
+    const { data } = await axios.post("https://grocery-shop-backend-ihni.onrender.com/api/user/send-reset-password-email", {
       email,
     });
     dispatch({ type: SEND_PASSWORD_REST_EMAIL_SUCCESS, payload: data });
@@ -148,7 +148,7 @@ export const restPasswordAction =
     try {
       dispatch({ type: USER_PASSWORD_REST_REQUEST });
       const { data } = await axios.post(
-        `/api/user/reset-password/${id}/${token}`,
+        `https://grocery-shop-backend-ihni.onrender.com/api/user/reset-password/${id}/${token}`,
         {
           password,
           confirm_password,
@@ -167,7 +167,7 @@ export const getAllUsersAdminAction = () => async (dispatch) => {
   try {
     dispatch({ type: GET_ALL_USERS_REQUEST });
     const token = localStorage.getItem('token');
-    const { data } = await axios.get("/api/user/admin/user", {
+    const { data } = await axios.get("https://grocery-shop-backend-ihni.onrender.com/api/user/admin/user", {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -185,7 +185,7 @@ export const deleteUserAdminAction = (userId) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_USER_REQUEST });
     const token = localStorage.getItem('token');
-    const { data } = await axios.delete(`/api/user/admin/user/${userId}`, {
+    const { data } = await axios.delete(`https://grocery-shop-backend-ihni.onrender.com/api/user/admin/user/${userId}`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -200,7 +200,7 @@ export const adminUpdateUserAction = (userId, UserRole) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_USER_ROLE_REQUEST });
     const token = localStorage.getItem('token');
-    const { data } = await axios.put(`/api/user/admin/user/${userId}`, {
+    const { data } = await axios.put(`https://grocery-shop-backend-ihni.onrender.com/api/user/admin/user/${userId}`, {
       UserRole,
     }, {
       headers: {
