@@ -17,7 +17,7 @@ import {
 export const getUsersOrdersAction = (userId) => async (dispatch) => {
   try {
     dispatch({ type: GET_USER_ORDERS_REQUEST });
-    const { data } = await axios.get("/api/user/my/orders");
+    const { data } = await axios.get("https://grocery-shop-backend-ihni.onrender.com/api/user/my/orders");
     dispatch({ type: GET_USER_ORDERS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -31,7 +31,7 @@ export const getUsersOrdersAction = (userId) => async (dispatch) => {
 export const getUsersOrderDetailsAction = (orderId) => async (dispatch) => {
   try {
     dispatch({ type: GET_USER_ORDERS_DETAILS_REQUEST });
-    const { data } = await axios.get(`/api/user/my/order/${orderId}`);
+    const { data } = await axios.get(`https://grocery-shop-backend-ihni.onrender.com/api/user/my/order/${orderId}`);
     dispatch({ type: GET_USER_ORDERS_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -45,7 +45,7 @@ export const getUsersOrderDetailsAction = (orderId) => async (dispatch) => {
 export const getAllOrdersAdminAction = () => async (dispatch) => {
   try {
     dispatch({ type: GET_ALL_ORDERS_ADMIN_REQUEST });
-    const { data } = await axios.get("/api/user/admin/orders");
+    const { data } = await axios.get("https://grocery-shop-backend-ihni.onrender.com/api/user/admin/orders");
     dispatch({ type: GET_ALL_ORDERS_ADMIN_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -59,7 +59,7 @@ export const updateOrdersAdminAction =
   (orderId, oStatus) => async (dispatch) => {
     try {
       dispatch({ type: UPDATE_ORDER_ADMIN_REQUEST });
-      const { data } = await axios.put(`/api/user/update/order/${orderId}`, {
+      const { data } = await axios.put(`https://grocery-shop-backend-ihni.onrender.com/api/user/update/order/${orderId}`, {
         oStatus,
       });
       dispatch({ type: UPDATE_ORDER_ADMIN_SUCCESS, payload: data });
